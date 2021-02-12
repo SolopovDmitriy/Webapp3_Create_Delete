@@ -12,7 +12,7 @@ export default  class TemplatePage extends React.Component{
 
             <div className="row">
                 <MainMenu />
-                <h1>Я разрабатываюсь</h1>
+                <h1>Разработка текущего события</h1>
                 {this.props.children}
                 <Footer />
             </div>

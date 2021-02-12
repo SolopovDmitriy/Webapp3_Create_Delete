@@ -1,0 +1,9 @@
+.removeIcon {​​
+width: 25px;
+    transition-duration: 0.5s;
+    transition-property: all;
+}​​
+
+ .removeIcon:hover{​​
+transform: scale(1.2);
+ }​​

@@ -20,14 +20,22 @@ app.get('/', (request, response) => {   // http://localhost:3000/event
  * получает строки базы по критерию
  * ввод как /name
  */
+// app.get('/:id', (request, response) => {  // http://localhost:3000/event/6022e7ce6e4e4640dc29ab2d
+//     console.log({_id: request.params.id});
+//     eventM.getOneRowById(request.params.id, function (result) {
+//         response.json(result);
+//     });
+// //    response.status(200).send('get info: ' + request.params.id);
+// });
 app.get('/:id', (request, response) => {  // http://localhost:3000/event/6022e7ce6e4e4640dc29ab2d
-    console.log({_id: request.params.id});
-    eventM.getOneRowById(request.params.id, function (result) {
+
+    eventM.getOneRow({
+        _id: ObjectId(request.params.id)
+    }, function(result, err){
         response.json(result);
     });
 //    response.status(200).send('get info: ' + request.params.id);
 });
-
 
 
 
@@ -41,8 +49,6 @@ app.post('/', (request, response) =>{ // http://localhost:3000/event, созда
             response.status(200).send('not created');
     });
 });
-
-
 
 
 
@@ -130,14 +136,31 @@ app.put('/:id', (request, response) => {
  * удаляет пользователя по его email
  * параметр передается как /email
  */
+// app.delete('/:id', (request, response) => {
+//     eventM.deleteRowById(request.params.id, function (result, err) {
+//         if (result == true)
+//             response.status(200).send('one row deleted: ' + request.params.email);
+//         else
+//             response.status(200).send('one row deleted: Error ' + request.params.email);
+//     })
+//
+// });
+
+
+
+
 app.delete('/:id', (request, response) => {
     eventM.deleteRowById(request.params.id, function (result, err) {
-        if (result == true)
-            response.status(200).send('one row deleted: ' + request.params.email);
-        else
-            response.status(200).send('one row deleted: Error ' + request.params.email);
+        if (result == true){
+            response.set('Access-Control-Allow-Origin', '*');
+            response.status(200).send('one row deleted: ');
+        }
+        else {
+            response.status(200).send('one row deleted: Error ');
+        }
     })
 
 });
+
 
 module.exports = app;

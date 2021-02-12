@@ -9,6 +9,7 @@ import EventsRoute from '../../components/pages/Events/Events';
 import OneEventRoute from '../../components/pages/OneEvent/OneEvent';
 import CreateEventRoute from '../../components/pages/CreateEvent/createEvent';
 import DeleteEventRoute from '../../components/pages/DeleteEvent/DeleteEvent';
+import EventRoute from '../../components/pages/Event/Event';
 /*                                                   end*/
 
 //
@@ -24,6 +25,7 @@ function App() {
                     <Route exact path='/create_event' component={CreateEventRoute}/>
                     <Route exact path='/delete_event/:id' component={DeleteEventRoute}/>
                     <Route exact path='/event/:id' component={OneEventRoute}/>
+                    <Route  path='/event/' component={EventRoute}/>
                     <Route component={WhoopsRoute}/>
                 </Switch>
             </TemplatePage>
